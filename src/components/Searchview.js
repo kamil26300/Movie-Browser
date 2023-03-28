@@ -50,7 +50,9 @@ const Searchview = ({ keyword, results }) => {
 					</div>
 				</div>
 			);
-		}
+		} else {
+            return <></>
+        }
 	});
 	return (
 		<div>
