@@ -1,16 +1,24 @@
-function Navbar() {
+import { useNavigate, Link } from "react-router-dom";
+
+const Navbar = ({ searchText, setSearchText }) => {
+    const navigate = useNavigate();
+
+	const updateSearchText = (e) => {
+        navigate('/search')
+		setSearchText(e.target.value);
+	};
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg bg-warning">
 				<div className="container-fluid">
-					<a className="navbar-brand" href="gotoSomewhere">
+					<Link className="navbar-brand" to="/">
 						Movie Browser
-					</a>
+					</Link>
 					<button
 						className="navbar-toggler"
 						type="button"
 						data-bs-toggle="collapse"
-						data-bs-target="gotoSomewherenavbarSupportedContent"
+						data-bs-target="/about"
 						aria-controls="navbarSupportedContent"
 						aria-expanded="false"
 						aria-label="Toggle navigation">
@@ -21,24 +29,27 @@ function Navbar() {
 						id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 							<li className="nav-item">
-								<a
+								<Link
 									className="nav-link active"
 									aria-current="page"
-									href="gotoSomewhere">
+									to="/">
 									Home
-								</a>
+								</Link>
 							</li>
 							<li className="nav-item">
-								<a
+								<Link
 									className="nav-link"
-									href="gotoSomewhere">
-									Link
-								</a>
+									to="/about">
+									About
+								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link disabled">
-									Disabled
-								</a>
+								<Link
+									className="nav-link disabled"
+									to="/">
+									Comming
+									soon
+								</Link>
 							</li>
 						</ul>
 						<form
@@ -49,6 +60,12 @@ function Navbar() {
 								type="search"
 								placeholder="Search"
 								aria-label="Search"
+								value={
+									searchText
+								}
+								onChange={
+									updateSearchText
+								}
 							/>
 							<button
 								className="btn btn-outline-success"
@@ -61,6 +78,6 @@ function Navbar() {
 			</nav>
 		</div>
 	);
-}
+};
 
 export default Navbar;

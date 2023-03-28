@@ -1,0 +1,15 @@
+.card {
+    width: calc((100% - 60px)/5);
+    padding-bottom: 35px;
+}
+
+.cardDiv {
+    display: grid;
+    gap: 15px;
+    padding: 10px;
+}
+
+.cardB {
+    position: absolute;
+    bottom: 10px;
+}
