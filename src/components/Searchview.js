@@ -2,9 +2,6 @@ import Hero from "./Hero";
 import "../App.css";
 import { useState } from "react";
 // API key = 6f8d314c84e820cd935e8e5c7ecb7125
-// example = https://api.themoviedb.org/3/search/movie/images?api_key=6f8d314c84e820cd935e8e5c7ecb7125&language-en-US&query=john%20wick%202&page=1&include_adult=true1
-// example = https://api.themoviedb.org/3/search/movie/${obj.id}/images?api_key=6f8d314c84e820cd935e8e5c7ecb7125&language-en-US&query=john%20wick%202&page=1&include_adult=true1
-// example = https://api.themoviedb.org/3/search/movie/324552/images?api_key=6f8d314c84e820cd935e8e5c7ecb7125&language-en-US&query=john%20wick%202&page=1&include_adult=true1
 
 const ReadMore = ({ children }) => {
 	const text = children;
@@ -12,14 +9,19 @@ const ReadMore = ({ children }) => {
 	const toggleReadMore = () => {
 		setIsReadMore(!isReadMore);
 	};
-	return (
-		<p className="text">
-			{isReadMore ? text.slice(0, 150) : text}
-			<span onClick={toggleReadMore} className="read-or-hide">
-				{isReadMore ? "...read more" : " show less"}
-			</span>
-		</p>
-	);
+
+    if (text.length > 155) {
+        return (
+            <p className="text">
+                {isReadMore ? text.slice(0, 150) : text}
+                <span onClick={toggleReadMore} className="read-or-hide">
+                    {isReadMore ? "...read more" : " show less"}
+                </span>
+            </p>
+        );
+    } else {
+        return <p>{text}</p>;
+    }
 };
 
 const Searchview = ({ keyword, results }) => {
@@ -43,7 +45,7 @@ const Searchview = ({ keyword, results }) => {
 							{obj.overview}
                         </ReadMore>
 						<a
-							href="/search"
+							href="#"
 							className="btn cardB btn-primary">
 							Open
 						</a>
