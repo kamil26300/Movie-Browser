@@ -1,36 +1,34 @@
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = ({ searchText, setSearchText }) => {
+    const [ text, setText ] = useState('')
+    
     const navigate = useNavigate();
 
-	const updateSearchText = (e) => {
+    const updateText = (e) => {
+        setText(e.target.value)
+    }
+    
+	const updateSearchText = () => {
         navigate('/search')
-		setSearchText(e.target.value);
+		setSearchText(text);
 	};
+
 	return (
 		<div>
-			<nav className="navbar navbar-expand-lg bg-warning">
+			<nav className="navbar navbar-expand-lg bg-success">
 				<div className="container-fluid">
-					<Link className="navbar-brand" to="/">
+					<Link className="navbar-brand text-white" to="/">
 						Movie Browser
 					</Link>
-					<button
-						className="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="/about"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span className="navbar-toggler-icon"></span>
-					</button>
 					<div
 						className="collapse navbar-collapse"
 						id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 							<li className="nav-item">
 								<Link
-									className="nav-link active"
+									className="nav-link active text-white"
 									aria-current="page"
 									to="/">
 									Home
@@ -38,14 +36,14 @@ const Navbar = ({ searchText, setSearchText }) => {
 							</li>
 							<li className="nav-item">
 								<Link
-									className="nav-link"
+									className="nav-link text-white"
 									to="/about">
 									About
 								</Link>
 							</li>
 							<li className="nav-item">
 								<Link
-									className="nav-link disabled"
+									className="nav-link disabled text-white"
 									to="/">
 									Comming
 									soon
@@ -61,15 +59,16 @@ const Navbar = ({ searchText, setSearchText }) => {
 								placeholder="Search"
 								aria-label="Search"
 								value={
-									searchText
+									text
 								}
 								onChange={
-									updateSearchText
+									updateText
 								}
 							/>
 							<button
-								className="btn btn-outline-success"
-								type="submit">
+								className="btn btn-outline-light"
+								type="Button"
+                                onClick={updateSearchText}>
 								Search
 							</button>
 						</form>

@@ -31,7 +31,7 @@ const Searchview = ({ keyword, results }) => {
 		if (obj.backdrop_path) {
 			const posterURL = `https://image.tmdb.org/t/p/original${obj.backdrop_path}`;
 			return (
-				<div key={i} className="card">
+				<div key={i} className="card bg-dark text-light">
 					<img
 						src={posterURL}
 						className="card-img-top"
