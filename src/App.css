@@ -1,19 +1,12 @@
 .card {
-	width: calc((100% - 60px) / 5);
-	padding-bottom: 35px;
+	/* padding-bottom: 35px; */
     box-shadow: 0 0 10px green;
 }
 
-.cardDiv {
-	display: grid;
-	gap: 15px;
-	padding: 10px 10vw;
-}
-
-.cardB {
+/* .cardB {
 	position: absolute;
 	bottom: 13px;
-}
+}  */
 
 .read-or-hide {
 	color: rgb(192, 192, 192);
