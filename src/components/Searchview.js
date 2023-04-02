@@ -10,10 +10,10 @@ const ReadMore = ({ children }) => {
 		setIsReadMore(!isReadMore);
 	};
 
-	if (text.length > 155) {
+	if (text.length > 160) {
 		return (
 			<p className="text">
-				{isReadMore ? text.slice(0, 150) : text}
+				{isReadMore ? text.slice(0, 160) : text}
 				<span
 					onClick={toggleReadMore}
 					className="read-or-hide">
@@ -24,8 +24,10 @@ const ReadMore = ({ children }) => {
 			</p>
 		);
 	} else {
-		return <p>{text}</p>;
-	}
+        return (
+            <p>{text}</p>
+        )
+    }
 };
 
 const Searchview = ({ keyword, results }) => {
@@ -35,9 +37,12 @@ const Searchview = ({ keyword, results }) => {
 		if (obj.backdrop_path) {
 			const posterURL = `https://image.tmdb.org/t/p/original${obj.backdrop_path}`;
 			return (
-				<div key={i} className="col-lg-4 col-md-6 col-12 py-2">
+				<div
+					key={i}
+					className="col-lg-4 col-md-6 col-12 py-2">
 					<div
-						className="card bg-dark text-light">
+						className="card bg-dark text-light"
+						key={i}>
 						<img
 							src={posterURL}
 							className="card-img-top"
@@ -49,7 +54,10 @@ const Searchview = ({ keyword, results }) => {
 									obj.original_title
 								}
 							</h5>
-							<ReadMore>
+							<ReadMore
+								className={
+									"overview"
+								}>
 								{obj.overview}
 							</ReadMore>
 							<a
