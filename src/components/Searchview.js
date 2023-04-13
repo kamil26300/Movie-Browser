@@ -1,6 +1,7 @@
 import Hero from "./Hero";
 import "../App.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // API key = 6f8d314c84e820cd935e8e5c7ecb7125
 
 const ReadMore = ({ children }) => {
@@ -24,18 +25,16 @@ const ReadMore = ({ children }) => {
 			</p>
 		);
 	} else {
-        return (
-            <p>{text}</p>
-        )
-    }
+		return <p>{text}</p>;
+	}
 };
 
 const Searchview = ({ keyword, results }) => {
 	const title = `You are seraching for ${keyword}`;
-
 	const resultHtml = results.map((obj, i) => {
 		if (obj.backdrop_path) {
-			const posterURL = `https://image.tmdb.org/t/p/original${obj.backdrop_path}`;
+			const posterURL = `https://image.tmdb.org/t/p/original${obj.poster_path}`;
+			const detailURL = `/movies/${obj.id}`;
 			return (
 				<div
 					key={i}
@@ -60,19 +59,20 @@ const Searchview = ({ keyword, results }) => {
 								}>
 								{obj.overview}
 							</ReadMore>
-							<a
-								href="#"
+							<Link
+								to={detailURL}
 								className="btn cardB btn-primary">
 								Open
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>
 			);
 		} else {
-			return <></>;
+			return <div></div>;
 		}
 	});
+
 	return (
 		<div>
 			<Hero text={title} />

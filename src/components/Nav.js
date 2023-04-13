@@ -64,6 +64,11 @@ const Navbar = ({ searchText, setSearchText }) => {
 								onChange={
 									updateText
 								}
+                                // onKeyDown={(e) => {
+                                //     if (e.keyCode == 13) {
+                                //         updateSearchText()
+                                //     }
+                                // }}
 							/>
 							<button
 								className="btn btn-outline-light"
