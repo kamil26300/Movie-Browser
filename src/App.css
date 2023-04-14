@@ -48,3 +48,18 @@
     background-position: center center;
     opacity: 0.5;
 }
+
+input:invalid {
+    animation: shake 0.3s;
+    color: red !important;
+    box-shadow: 0 0 0 2px red !important;
+}
+
+@keyframes shake {
+    25%, 75% {
+        transform: translateX(4px);
+    }
+    50% {
+        transform: translateX(-4px);
+    }
+}

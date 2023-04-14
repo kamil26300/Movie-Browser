@@ -58,6 +58,7 @@ const Navbar = ({ searchText, setSearchText }) => {
 								type="search"
 								placeholder="Search"
 								aria-label="Search"
+                                pattern="[a-zA-Z0-9]*"
 								value={
 									text
 								}
