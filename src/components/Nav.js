@@ -29,7 +29,6 @@ const Navbar = ({ searchText, setSearchText }) => {
 							<li className="nav-item">
 								<Link
 									className="nav-link active text-white"
-									aria-current="page"
 									to="/">
 									Home
 								</Link>
@@ -50,15 +49,14 @@ const Navbar = ({ searchText, setSearchText }) => {
 								</Link>
 							</li>
 						</ul>
-						<form
+						<div
 							className="d-flex"
 							role="search">
 							<input
 								className="form-control me-2"
 								type="search"
 								placeholder="Search"
-								aria-label="Search"
-                                pattern="[a-zA-Z0-9]*"
+                                pattern="[a-z A-Z0-9]*"
 								value={
 									text
 								}
@@ -77,7 +75,7 @@ const Navbar = ({ searchText, setSearchText }) => {
                                 onClick={updateSearchText}>
 								Search
 							</button>
-						</form>
+						</div>
 					</div>
 				</div>
 			</nav>

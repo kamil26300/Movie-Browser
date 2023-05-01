@@ -40,8 +40,7 @@ const Searchview = ({ keyword, results }) => {
 					key={i}
 					className="col-lg-4 col-md-6 col-12 py-2">
 					<div
-						className="card bg-dark text-light"
-						key={i}>
+						className="card bg-dark text-light">
 						<img
 							src={posterURL}
 							className="card-img-top"
@@ -69,7 +68,7 @@ const Searchview = ({ keyword, results }) => {
 				</div>
 			);
 		} else {
-			return <div></div>;
+			return <></>;
 		}
 	});
 
