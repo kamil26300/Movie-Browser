@@ -49,7 +49,7 @@
     opacity: 0.5;
 }
 
-input:invalid {
+/* input:invalid {
     animation: shake 0.3s;
     color: red !important;
     box-shadow: 0 0 0 2px red !important;
@@ -62,4 +62,8 @@ input:invalid {
     50% {
         transform: translateX(-4px);
     }
+} */
+
+.form-control {
+    width: 25vw !important;
 }

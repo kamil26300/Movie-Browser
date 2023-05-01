@@ -1,19 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = ({ searchText, setSearchText }) => {
     const [ text, setText ] = useState('')
+    const [ searchOptions, setSearchOptions ] = useState([])
     
     const navigate = useNavigate();
 
+    // fetched api for drop down menu in search
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=6f8d314c84e820cd935e8e5c7ecb7125&language-en-US&query=${text}&page=1&include_adult=false`)
+        .then(response => response.json())
+        .then(data => {
+            setSearchOptions(data.results)
+        })
+    }, [text])
+
+    // updating text in search area
     const updateText = (e) => {
         setText(e.target.value)
     }
     
+    // Shows all the cards on press of button
 	const updateSearchText = () => {
         navigate('/search')
 		setSearchText(text);
 	};
+    
+    const resultOptions = searchOptions.map((obj, i) => {
+        return <option key={i} value={obj.original_title}></option>
+    })
 
 	return (
 		<div>
@@ -56,7 +72,7 @@ const Navbar = ({ searchText, setSearchText }) => {
 								className="form-control me-2"
 								type="search"
 								placeholder="Search"
-                                pattern="[a-z A-Z0-9]*"
+                                list="titles"
 								value={
 									text
 								}
@@ -69,6 +85,7 @@ const Navbar = ({ searchText, setSearchText }) => {
                                 //     }
                                 // }}
 							/>
+                            <datalist id="titles">{resultOptions}</datalist>
 							<button
 								className="btn btn-outline-light"
 								type="Button"

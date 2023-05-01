@@ -43,7 +43,7 @@ const Searchview = ({ keyword, results }) => {
 						className="card bg-dark text-light">
 						<img
 							src={posterURL}
-							className="card-img-top"
+							className="card-img-top post"
 							alt="poster.jpg"
 						/>
 						<div className="card-body">
